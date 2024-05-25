@@ -1,5 +1,5 @@
 package MeuJogoJava.src;
-import MeuJogoJava.lib.*;
+//import MeuJogoJava.lib.*;
 
 public class Main {
 
