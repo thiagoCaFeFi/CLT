@@ -1,15 +1,15 @@
-package MeuJogoJava.src;
+package MeuJogoJava.src.principais;
 
 import java.util.Random;
 import java.util.Scanner;
 
 public class Combate{
-    Personagens usuario = new Personagens("Abacate",50);
-    Inimigos computador = new Inimigos("Arroz",30);
+    Personagens usuario;
+    Inimigos computador;
     String nome =  usuario.getNome();
     int vida = usuario.getVida();
-    String nome1 = computador.getNome1();
-    int vida1 = computador.getVida1();
+    String nome1 = computador.getNome();
+    int vida1 = computador.getVida();
     Scanner leitor = new Scanner(System.in);
     public int ataqueUsuario(){
 
