@@ -136,7 +136,7 @@ public class UI {
         
         g2.setColor(Color.white);
         g2.setFont(maruMonica.deriveFont(Font.BOLD, 14)); 
-        String vidaTexto = painelDeJogo.getPlayer().getVida() + "/" + painelDeJogo.getPlayer().vida;
+        String vidaTexto = painelDeJogo.getPlayer().getVida() + "/" + painelDeJogo.getPlayer().vidaMaxima;
         int vidaTextoX = barX + (barWidth - g2.getFontMetrics().stringWidth(vidaTexto)) / 2;
         int vidaTextoY = barY + barHeight - 5;
         g2.drawString(vidaTexto, vidaTextoX, vidaTextoY);
@@ -145,9 +145,9 @@ public class UI {
     public void usarItemSelecionado() {
         int selectedIndex = slotRow * 5 + slotCol; 
         if (selectedIndex >= 0 && selectedIndex < painelDeJogo.getPlayer().inventario.size()) {
-            SuperObject selectedItem = painelDeJogo.getPlayer().inventario.get(selectedIndex);
+            Objetos selectedItem = painelDeJogo.getPlayer().inventario.get(selectedIndex);
             selectedItem.usouItem(painelDeJogo.getPlayer());
-            System.out.println("Dano:"+painelDeJogo.getPlayer().getDano());
+            //System.out.println("Dano:"+painelDeJogo.getPlayer().getDano());
             painelDeJogo.getPlayer().inventario.remove(selectedIndex);
             painelDeJogo.repaint();
         }

@@ -15,8 +15,8 @@ public class Inimigos extends SerVivo{
     private double coeficienteXP;
     private int dificuldadeInimigo;
     private String nomeInimigo;
-    public Inimigos(int dificuldadeInimigo, String nome, int vida, boolean EstaVivo,int posicaoX, int posicaoY, int velocidade, PainelDeJogo gp){
-        super(nome,vida,EstaVivo,posicaoX,posicaoY,velocidade,gp);
+    public Inimigos(PainelDeJogo gp, int dificuldadeInimigo){
+        super(gp);
         this.dificuldadeInimigo = dificuldadeInimigo;
     }
     public String obterNomeInimigo(String nome){
@@ -24,25 +24,25 @@ public class Inimigos extends SerVivo{
         return nomeInimigo;
 
     }
-    public static Inimigos escolherInimigo(String nomeInimigo, int dificuldadeInimigo) {
+    public static Inimigos escolherInimigo(PainelDeJogo gp, int dificuldadeInimigo) {
         Random random = new Random();
         int personagemIndex = random.nextInt(7) + 1;
 
         switch (personagemIndex) {
             case 1:
-                return new Javali(nomeInimigo, dificuldadeInimigo);
+                return new Javali(gp, dificuldadeInimigo);
             case 2:
-                return new Goblin(nomeInimigo, dificuldadeInimigo);
+                return new Goblin(gp, dificuldadeInimigo);
             case 3:
-                return new HobGoblin(nomeInimigo, dificuldadeInimigo);
+                return new HobGoblin(gp, dificuldadeInimigo);
             case 4:
-                return new SoldadoDasSombbras(nomeInimigo, dificuldadeInimigo);
+                return new SoldadoDasSombbras(gp, dificuldadeInimigo);
             case 5:   
-                return new CavaleiroDasSombras(nomeInimigo, dificuldadeInimigo);
+                return new CavaleiroDasSombras(gp, dificuldadeInimigo);
             case 6:
-                return new MagoDasSombras(nomeInimigo, dificuldadeInimigo);
+                return new MagoDasSombras(gp, dificuldadeInimigo);
             case 7:
-                return new GeneralDasSombras(nomeInimigo, dificuldadeInimigo);
+                return new GeneralDasSombras(gp, dificuldadeInimigo);
             default:
                 System.out.println("Escolha inválida");
                 return null;

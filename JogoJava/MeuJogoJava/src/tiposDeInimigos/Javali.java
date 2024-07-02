@@ -9,11 +9,15 @@ import MeuJogoJava.src.main.KeyHandler;
 
 public class Javali extends Inimigos {
     private String nomeInimigo = "Javali";
-    private void loadSprites() {
-        try {
-            idle = ImageIO.read(getClass().getResourceAsStream("res/inimigos/Javali.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public Javali(PainelDeJogo gp, int dificuldadeInimigo, String nome){
+        super(gp, dificuldadeInimigo);
+        obterNomeInimigo("General das Sombras");
     }
+    //private void loadSprites() {
+        //try {
+            //idle = ImageIO.read(getClass().getResourceAsStream("res/inimigos/Javali.png"));
+       // } catch (IOException e) {
+           // e.printStackTrace();
+        //}
+    //}
 }
