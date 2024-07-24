@@ -16,8 +16,8 @@ public class Guerreiro extends Personagens {
         velocidade = 6;
         bounds.y = -30;
         bounds.x = -45;
-        bounds.width = 50;
-        bounds.height = 70;
+        bounds.width = 200;
+        bounds.height = 250;
 
     }
 
@@ -51,6 +51,7 @@ public class Guerreiro extends Personagens {
             runcostas4 = ImageIO.read(getClass().getResourceAsStream("/MeuJogoJava/res/personagens/guerreiro/guerreiroRun4Back.png"));
             runcostas5 = ImageIO.read(getClass().getResourceAsStream("/MeuJogoJava/res/personagens/guerreiro/guerreiroRun5Back.png"));
             runcostas6 = ImageIO.read(getClass().getResourceAsStream("/MeuJogoJava/res/personagens/guerreiro/guerreiroRun6Back.png"));
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -8,7 +8,7 @@ import java.awt.*;
 public abstract class Entity {
     protected PainelDeJogo gp;
     public int xpDrop, moedaDrop;
-    public BufferedImage image1, image2;
+    public BufferedImage image1, image2, image3, image4, image5, image6;
     public BufferedImage idle,idle2,idle3,idle4,idle5,idle6, idleback, idle2back, idle3back, idle4back, idle5back, idle6back, run, run2, run3, run4, run5, run6,runcostas, runcostas2, runcostas3, runcostas4, runcostas5, runcostas6;
     public boolean atacando;
     public boolean morto;
@@ -40,12 +40,15 @@ public abstract class Entity {
         
     }
     public String getNome() { 
-            return nome; 
+
+        return nome;
     }
     public void setPosicaoX(int posicaoX) {
+
         this.posicaoX = posicaoX;
     }
     public void setPosicaoY(int posicaoY) {
+
         this.posicaoY = posicaoY;
     }
     public void variacaoAtaque() {
@@ -61,7 +64,7 @@ public abstract class Entity {
         if (spriteCounter >= 5) {
             spriteCounter = 0;
             spriteNum++;
-            if (spriteNum > 7) {
+            if (spriteNum > 6) {
                 spriteNum = 1;
             }
         }
@@ -69,10 +72,19 @@ public abstract class Entity {
     public void draw(Graphics2D g2) {
         BufferedImage image = null;
         if (spriteNum == 1) {
-            image = image1;
+            image = idle;
         } else if (spriteNum == 2) {
-            image = image2;
+            image = idle2;
+        } else if (spriteNum == 3) {
+            image = idle3;
+        } else if (spriteNum == 4) {
+            image = idle4;
+        } else if (spriteNum == 5) {
+            image = idle5;
+        } else if (spriteNum == 6) {
+            image = idle6;
         }
+
         g2.drawImage(image, (int) (posicaoX - gp.getCamera().getxOffSet() - (gp.tamanhoTitulo)), (int) (posicaoY - gp.getCamera().getyOffSet() - (gp.tamanhoTitulo)), gp.tamanhoTitulo, gp.tamanhoTitulo, null);
 
     }

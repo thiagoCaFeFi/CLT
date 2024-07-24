@@ -6,16 +6,12 @@ import MeuJogoJava.src.entidades.Personagens;
 import MeuJogoJava.src.interfaceUsuario.UI;
 import MeuJogoJava.src.interfaceUsuario.Dialogos;
 import MeuJogoJava.src.mapas.Maps;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-
 import MeuJogoJava.src.atos.Galan;
 import MeuJogoJava.src.atos.Prologo;
-
-
 import javax.swing.JPanel;
 
 import MeuJogoJava.src.principais.Combate;
@@ -23,7 +19,7 @@ import MeuJogoJava.src.tiposDeClasse.Guerreiro;
 
 public class PainelDeJogo extends JPanel implements Runnable  {
     public final int tituloTamanhoOriginal = 16;
-    public final int escala = 5;
+    public final int escala = 3;
     public final int tamanhoTitulo = tituloTamanhoOriginal * escala;
     public final int tamanhoMaximoHorizontal = 16;
     public final int tamanhoMaximoVertical = 12;
@@ -32,7 +28,8 @@ public class PainelDeJogo extends JPanel implements Runnable  {
     final int fps = 60;
     private Maps currentMap;
     private Prologo prologo;
-    private Galan mapaGalan;
+    private Galan galan;
+    private Guerreiro guerreiro;
     private UI ui;
     KeyHandler keyH = new KeyHandler(this);
     Thread threadDoJogo;
@@ -43,23 +40,6 @@ public class PainelDeJogo extends JPanel implements Runnable  {
     EntityManager entityManager = new EntityManager(this, player);
     public boolean lutando;
     public boolean defendendo;
-    
-
-
-    public Camera getCamera() {
-        return camera;
-    }
-    public Combate getCombate() {
-        return combate;
-    }
-
-    public EntityManager getEntityManager() {
-        return entityManager;
-        
-    }
-    public void setPlayer(Personagens player){
-        this.player = player;
-    }
 
     public PainelDeJogo() {
         this.setPreferredSize(new Dimension(tamanhoComprimento, tamanhoAltura));
@@ -67,15 +47,35 @@ public class PainelDeJogo extends JPanel implements Runnable  {
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
-        
-        
+
         this.ui = new UI(this, 90);
         this.prologo = new Prologo(this, keyH);
         setChapter(Capitulos.Prologo);
         this.combate = new Combate(this, player.atualEntity);
     }   
     public Personagens getPlayer() {
+
         return player;
+    }
+
+    public void setPlayer(Personagens player){
+
+        this.player = player;
+
+    }
+
+    public Camera getCamera() {
+
+        return camera;
+    }
+    public Combate getCombate() {
+
+        return combate;
+    }
+
+    public EntityManager getEntityManager() {
+        return entityManager;
+
     }
 
     public UI getUi() {
@@ -178,6 +178,8 @@ public class PainelDeJogo extends JPanel implements Runnable  {
                 ui.draw(g2);
             } else if (estadoPersonagem == EstadoPersonagem.Dialogo) {
                 ui.draw(g2);
+            } else if (estadoPersonagem == EstadoPersonagem.Profile){
+                ui.draw(g2);
             }
         }
         g2.dispose();
@@ -194,23 +196,27 @@ public class PainelDeJogo extends JPanel implements Runnable  {
         switch (chapter) {
             case Prologo:
                 if (prologo == null) {
-                    setPlayer(new Guerreiro(this,keyH));
-                    prologo = new Prologo(this, keyH);
+                   prologo = new Prologo(this, keyH);
+                    setPlayer(guerreiro);
                 }
                 this.currentMap = prologo.getMap();
                 break;
             case galan:
-                if (mapaGalan == null) {
-                    Guerreiro guerreiro = new Guerreiro(this,keyH);
+                if (galan == null) {
+                    if (guerreiro == null){
+                        guerreiro = new Guerreiro(this,keyH);
+                    }
                     setPlayer(guerreiro);
-                    guerreiro.posicaoX = tamanhoTitulo*2;
-                    guerreiro.posicaoY = tamanhoTitulo*18;
-                    mapaGalan = new Galan(this, keyH);
+                        guerreiro.posicaoX = tamanhoTitulo*2;
+                        guerreiro.posicaoY = tamanhoTitulo*18;
+                        galan = new Galan(this, keyH);
+                    } else{
+                        setPlayer(guerreiro);
+                    }
+                    this.currentMap = galan.getMap();
+                    break;
                 }
-                this.currentMap = mapaGalan.getMap();
-                break;
+                
             }
-
-             }
 
 }

@@ -26,6 +26,7 @@ public class Personagens extends Entity {
      public Entity atualEntity;
      public int moeda,dano;
      protected boolean isSpecialAttack = false;
+     public int reducaoDeDano;
      
 
 
@@ -93,9 +94,16 @@ public class Personagens extends Entity {
     protected void setDefaultValues() {
         posicaoX = gp.tamanhoTitulo*15;
         posicaoY = gp.tamanhoTitulo*18;
-        vida = 50;
-        vidaMaxima =50;
-        velocidade =4;
+        vida = 100;
+        vidaMaxima = 100;
+        velocidade = 6;
+        mana = 100;
+        manaMax = 100;
+        xp = 0;
+        xpMax = 10;
+        level = 1;
+        reducaoDeDano = 3;
+        moeda = 50;
    }
    protected boolean collisionWithTile(int x, int y) {
      return gp.getCurrentMap().getTile(x,y).isSolid();
@@ -256,11 +264,9 @@ public void draw(Graphics2D g2) {
     }
 
     g2.drawImage(image,
-            (int) (posicaoX - gp.getCamera().getxOffSet() - (gp.tamanhoTitulo * 9) / 4),
+            (int) (posicaoX - gp.getCamera().getxOffSet() - (gp.tamanhoTitulo * 9) / 2),
             (int) (posicaoY - gp.getCamera().getyOffSet() - (gp.tamanhoTitulo * 10) / 3),
-            gp.tamanhoTitulo * 4,
-            gp.tamanhoTitulo * 4,
-            null);
+            gp.tamanhoTitulo * 9, gp.tamanhoTitulo * 4,null);
 
 
 }

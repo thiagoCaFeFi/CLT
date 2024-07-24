@@ -1,15 +1,13 @@
 package MeuJogoJava.src.interfaceUsuario;
+
 import MeuJogoJava.src.main.PainelDeJogo;
 import java.util.ArrayList;
-
 import javax.imageio.ImageIO;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import MeuJogoJava.src.entidades.Personagens;
-
 import MeuJogoJava.src.objetos.Objetos;
 
 public class UI {
@@ -211,14 +209,14 @@ public class UI {
     private void updateGalan(long elapsedTime) {
 
         if (elapsedTime >= duration && !fadingOutGalan) {
-            iniciarDesaparecimentoFogo();
+            iniciarDesaparecimentoGalan();
 
         }
         if (fadingOutGalan) {
             galanOpacity -= 5;
             if (galanOpacity <= 0) {
                 galanOpacity = 0;
-                System.out.println("desapareceu fogo");
+                System.out.println("desapareceu Galan");
                 painelDeJogo.setEstadoDoJogo(PainelDeJogo.EstadoDoJogo.Jogando);
             }
         } else {
@@ -231,12 +229,12 @@ public class UI {
         }
     }
 
-    private void iniciarDesaparecimentoFogo() {
-        System.out.println("desaparecendo foogo");
+    private void iniciarDesaparecimentoGalan() {
+        System.out.println("desaparecendo Galan");
         fadingOutGalan = true;
     }
 
-    public boolean isFogoDesaparecido() {
+    public boolean isGalanDesaparecido() {
         return galanOpacity == 0;
     }
 
@@ -254,8 +252,8 @@ public class UI {
     }
     public void drawHealthAndManaBars(Graphics2D g2) {
         // Dimensões e posição das barras
-        int barX = 50;
-        int barY = 50;
+        int barX = 550;
+        int barY = 20;
         int barWidth = 200; // Largura total das barras
         int barHeight = 20; // Altura das barras
         int spacing = 10;
@@ -267,11 +265,11 @@ public class UI {
         int currentManaBarWidth = (int) ((double) painelDeJogo.getPlayer().mana / painelDeJogo.getPlayer().manaMax * barWidth);
 
 
-        g2.setColor(Color.gray); // Cor do fundo da barra
+        g2.setColor(Color.darkGray); // Cor do fundo da barra
         g2.fillRect(barX, barY, barWidth, barHeight);
 
 
-        g2.setColor(Color.red); // Cor da vida
+        g2.setColor(Color.green); // Cor da vida
         g2.fillRect(barX, barY, currentHealthBarWidth, barHeight);
 
         // Desenha o contorno da barra de vida
@@ -371,8 +369,8 @@ public class UI {
 
         
         final int slotSize = painelDeJogo.tamanhoTitulo;
-        final int slotXstart = frameX + 20;
-        final int slotYstart = frameY + 80;
+        final int slotXstart = frameX + 5;
+        final int slotYstart = frameY + 38;
 
         for (int row = 0; row < 4; row++) {
             for (int col = 0; col < 5; col++) {
@@ -386,9 +384,9 @@ public class UI {
                     
                     Objetos item = painelDeJogo.getPlayer().inventario.get(index);
 
-                    if (item.image != null) {
+                    if (item.foto != null) {
                         // Converte BufferedImage para Image
-                        Image img = (Image) item.image;
+                        Image img = (Image) item.foto;
 
                         // Desenha a imagem do inventário na posição atual
                         g2.drawImage(img, slotX, slotY, null);

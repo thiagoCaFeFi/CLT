@@ -11,7 +11,7 @@ public class PocaoVitalidade extends Objetos {
 
         nome = "Poção da Vitalidade";
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/MeuJogoJava/objetos/Big Vial - RED - 0000.png"));
+            foto = ImageIO.read(getClass().getResourceAsStream("res/objetos/Consumiveis/Big Vial - RED - 0000.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.awt.*;
-
 import MeuJogoJava.src.main.PainelDeJogo;
 
 public class EntityManager {
@@ -45,7 +44,6 @@ public class EntityManager {
     }
 
     public void desenhar(Graphics2D g2) {
-
 
         // Sincroniza a ordenação e a iteração sobre a lista de entidades
         synchronized (entities) {

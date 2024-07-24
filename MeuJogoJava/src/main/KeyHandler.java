@@ -57,29 +57,8 @@ public class KeyHandler implements KeyListener {
         gp.getPlayer().comprarCura();
     }
 }
-        if(gp.getEstadoPersonagem() == PainelDeJogo.EstadoPersonagem.Inventario) {
-            if(comando==KeyEvent.VK_W || comando==KeyEvent.VK_UP) {
-                if (gp.getUi().slotRow != 0) {
-                    gp.getUi().slotRow--;
-                }
-            }
-            if(comando == KeyEvent.VK_S || comando==KeyEvent.VK_DOWN) {
-                if(gp.getUi().slotRow != 3){
-                    gp.getUi().slotRow++;
-                }
-            }
-            if(comando == KeyEvent.VK_A || comando==KeyEvent.VK_LEFT) {
-                if(gp.getUi().slotCol != 0 ) {
-                    gp.getUi().slotCol--;
-                }
-            }
-            if(comando==KeyEvent.VK_D || comando==KeyEvent.VK_RIGHT) {
-                if(gp.getUi().slotCol != 4) {
-                    gp.getUi().slotCol++;
-                }
-            }
-        }
-        if (comando == KeyEvent.VK_P && gp.getEstadoDoJogo() == PainelDeJogo.EstadoDoJogo.Jogando && gp.getEstadoPersonagem() != PainelDeJogo.EstadoPersonagem.Combate) {
+
+        if (comando == KeyEvent.VK_Q && gp.getEstadoDoJogo() == PainelDeJogo.EstadoDoJogo.Jogando && gp.getEstadoPersonagem() != PainelDeJogo.EstadoPersonagem.Combate) {
 
             if (gp.getEstadoPersonagem() != PainelDeJogo.EstadoPersonagem.Profile) {
                 gp.setEstadoPersonagem(PainelDeJogo.EstadoPersonagem.Profile);
@@ -88,9 +67,7 @@ public class KeyHandler implements KeyListener {
                 gp.setEstadoPersonagem(PainelDeJogo.EstadoPersonagem.Ocioso);
             }
         }
-//        if(gp.getEstadoPersonagem() == PainelDeJogo.EstadoPersonagem.Profile) {
-//
-//        }
+
         // INVENTARIO
         if(gp.getEstadoPersonagem() == PainelDeJogo.EstadoPersonagem.Inventario) {
 

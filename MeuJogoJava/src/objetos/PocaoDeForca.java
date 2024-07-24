@@ -1,9 +1,7 @@
 package MeuJogoJava.src.objetos;
 
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-
 import MeuJogoJava.src.entidades.Personagens;
 
 public class PocaoDeForca extends Objetos {
@@ -13,7 +11,7 @@ public class PocaoDeForca extends Objetos {
 
         nome = "Poção de Aumento de Força";
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/MeuJogoJava/res/objetos/Big Vial - PURPLE - 0000"));
+            foto = ImageIO.read(getClass().getResourceAsStream("res/objetos/Consumiveis/Big Vial - PURPLE - 0000.png"));
         } catch (IOException e) {
             e.printStackTrace();
             
